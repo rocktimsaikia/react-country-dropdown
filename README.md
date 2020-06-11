@@ -15,12 +15,12 @@ npm install --save react-country-dropdown
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-country-dropdown'
+import CountryDropdown from 'react-country-dropdown'
 import 'react-country-dropdown/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <CountryDropdown countryCode='IN' />
   }
 }
 ```

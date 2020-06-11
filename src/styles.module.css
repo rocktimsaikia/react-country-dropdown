@@ -1,9 +1,93 @@
 /* add css module styles here (optional) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.container{
+  width: 200px;
+  height: 50px;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dropdown{
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  display: flex;
+  height: 100%;
+  width: 120px;
+  position: relative;
+  padding: 0 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.dropdown_items_wrapper{
+  position: relative;
+  margin-top: 18px;
+  transition: all 0.5s;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.dropdown_items{
+  padding: 10px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.input_wrapper{
+  margin: 10px;
+  padding-top: 10px;
+  position: relative;
+}
+.country_search{
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background: #f0f0f0;
+  padding: 5px;
+}
+
+/* width */
+.dropdown_items::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+.dropdown_items::-webkit-scrollbar-track {
+  background: #ffffff; 
+}
+ 
+/* Handle */
+.dropdown_items::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+.dropdown_items::-webkit-scrollbar-thumb:hover {
+  background: #696969; 
+}
+
+
+.dropdown_item{
+  color: #212121;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown_item_title{
+  margin-left: 15px;
+}
+
+.selected_country{
+  font-size: 20px;
+  color: #656565;
+  margin-left: 15px;
+}
+.country_flag{
+  height: 20px;
+  width: 30px;
+  border-radius: 2px;
 }

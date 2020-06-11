@@ -4,7 +4,7 @@
   "description": "A simple dropdown menu for selecting countries",
   "author": "RocktimSaikia",
   "license": "MIT",
-  "repository": "RocktimSaikia/react-country-dropdown",
+  "repository": "https://github.com/RocktimSaikia/react-country-dropdown",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

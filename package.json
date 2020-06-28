@@ -1,9 +1,15 @@
 {
   "name": "react-country-dropdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple dropdown menu for selecting countries",
   "author": "RocktimSaikia",
   "license": "MIT",
+  "keywords": [
+    "country",
+    "select",
+    "dropdown",
+    "react-dropdown"
+  ],
   "repository": "https://github.com/RocktimSaikia/react-country-dropdown",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",

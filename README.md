@@ -21,13 +21,13 @@ npm install --save react-country-dropdown
 ```js
 import React, { Component } from 'react'
 
-import CountryDropdown from 'react-country-dropdown'
+import {ReactCountryDropdown} from 'react-country-dropdown'
 import 'react-country-dropdown/dist/index.css'
 
 const Example=()=>{
   return (
     <div>
-      <CountryDropdown countryCode='IN' />
+      <ReactCountryDropdown countryCode='IN' />
     <div>
   )
 }
@@ -38,7 +38,7 @@ const Example=()=>{
 ```js
 import React, { Component } from 'react'
 
-import CountryDropdown from 'react-country-dropdown'
+import { ReactCountryDropdown } from 'react-country-dropdown'
 import 'react-country-dropdown/dist/index.css'
 
 const Example = () => {
@@ -56,7 +56,7 @@ const Example = () => {
   }
   return (
     <div>
-      <CountryDropdown onSelect={handleSelect} countryCode='IN' />
+      <ReactCountryDropdown onSelect={handleSelect} countryCode='IN' />
     </div>
   )
 }

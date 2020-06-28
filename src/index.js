@@ -120,7 +120,7 @@ export const ReactCountryDropdown = (props) => {
               onChange={(e) => handleSearchInput(e)}
               className={styles.country_search}
               type='text'
-              placeholder='&#128269;'
+              placeholder='search coutries...'
             />
           </div>
 

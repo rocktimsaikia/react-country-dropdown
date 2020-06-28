@@ -8,7 +8,11 @@ const App = () => {
     console.log(country)
   }
 
-  return <ReactCountryDropdown onSelect={handleSelect} countryCode='AL' />
+  return (
+    <div>
+      <ReactCountryDropdown onSelect={handleSelect} countryCode='AL' />
+    </div>
+  )
 }
 
 export default App

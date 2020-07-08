@@ -15,7 +15,7 @@ export const ReactCountryDropdown = (props) => {
   const dropdownRef = useRef(null)
 
   useEffect(() => {
-    defaultCountrySetter(props.countryCode)
+    defaultCountrySetter(props.countryCode ? props.countryCode : 'US')
     preFetchCountries().then((res) => {
       setCountries(res)
       setCountriesCopy(res)

@@ -43,6 +43,8 @@ const Example = () => {
 }
 ```
 
+(If you dont select set a default country with "countryCode" ; Then by default the selected country will US.)
+
 ## License
 
 MIT © [RocktimSaikia](https://github.com/RocktimSaikia)

@@ -85,7 +85,10 @@ export const ReactCountryDropdown = (props) => {
     })
     /* Send the result as props on select*/
     setSelectedCountry(result)
-    props.onSelect(result)
+
+    if (props.onSelect) {
+      props.onSelect(result)
+    }
 
     /* Hide the dropdown menu on selecting a country */
     toggleDropDown()

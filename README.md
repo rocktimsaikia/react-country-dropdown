@@ -16,25 +16,6 @@ npm install --save react-country-dropdown
 
 ## Usage
 
-1. Basic usage :
-
-```js
-import React, { Component } from 'react'
-
-import {ReactCountryDropdown} from 'react-country-dropdown'
-import 'react-country-dropdown/dist/index.css'
-
-const Example=()=>{
-  return (
-    <div>
-      <ReactCountryDropdown countryCode='IN' />
-    <div>
-  )
-}
-```
-
-2. Getting the selected country details :
-
 ```js
 import React, { Component } from 'react'
 

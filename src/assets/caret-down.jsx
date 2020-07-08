@@ -29,7 +29,7 @@ export const CaretDownIcon = (props) => {
         style = {
           position: 'absolute',
           left: '10px',
-          top: '-11px',
+          top: '-10px',
           transform: 'rotate(180deg)',
           color: '#fff',
           height: '16px'

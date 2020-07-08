@@ -82,14 +82,15 @@
 .dropdown_item {
   margin-bottom: 20px;
   display: flex;
-  align-items: center;
   cursor: pointer;
 }
 
 .dropdown_item_title {
   margin-left: 15px;
+  margin-top: -2px;
   font-size: 13px;
   font-weight: 500;
+  text-align: left;
   color: #484848;
 }
 

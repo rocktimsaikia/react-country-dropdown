@@ -44,7 +44,7 @@ export const ReactCountryDropdown = (props) => {
   }
 
   const preFetchCountries = async () => {
-    const data = await fetch('https://restcountries.eu/rest/v2/all')
+    const data = await fetch('https://restcountries.com/v2/all')
     const result = await data.json()
     return result
   }
@@ -58,7 +58,7 @@ export const ReactCountryDropdown = (props) => {
   const preloadImages = async () => {
     const mapIconArr = []
     Countries.map((i) => {
-      mapIconArr.push(`https://restcountries.eu/data/${i.alpha3Code}.svg`)
+      mapIconArr.push(`https://restcountries.com/data/${i.alpha3Code}.svg`)
     })
     return mapIconArr
   }
@@ -107,7 +107,7 @@ export const ReactCountryDropdown = (props) => {
       <div className={styles.dropdown} onClick={toggleDropDown}>
         <img
           className={styles.country_flag}
-          src={`https://restcountries.eu/data/${defaultCountry.alpha3Code.toLowerCase()}.svg`}
+          src={`https://restcountries.com/data/${defaultCountry.alpha3Code.toLowerCase()}.svg`}
         />
         <span className={styles.selected_country}>
           {defaultCountry.alpha2Code}

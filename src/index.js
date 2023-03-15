@@ -58,7 +58,7 @@ export const ReactCountryDropdown = (props) => {
   const preloadImages = async () => {
     const mapIconArr = []
     Countries.map((i) => {
-      mapIconArr.push(`https://restcountries.com/data/${i.alpha3Code}.svg`)
+      mapIconArr.push(`https://flagcdn.com/${i.alpha2Code?.toLowerCase()}.svg`)
     })
     return mapIconArr
   }
@@ -83,7 +83,7 @@ export const ReactCountryDropdown = (props) => {
       alpha2Code: i.alpha2Code,
       alpha3Code: i.alpha3Code
     })
-    /* Send the result as props on select*/
+    /* Send the result as props on select */
     setSelectedCountry(result)
 
     if (props.onSelect) {
@@ -96,7 +96,7 @@ export const ReactCountryDropdown = (props) => {
 
   const handleSearchInput = (e) => {
     const input = e.target.value.toLowerCase()
-    let filteredCountries = CountriesCopy.filter((i) =>
+    const filteredCountries = CountriesCopy.filter((i) =>
       i.name.toLowerCase().includes(input.toLowerCase())
     )
     setCountries(filteredCountries)
@@ -107,7 +107,7 @@ export const ReactCountryDropdown = (props) => {
       <div className={styles.dropdown} onClick={toggleDropDown}>
         <img
           className={styles.country_flag}
-          src={`https://restcountries.com/data/${defaultCountry.alpha3Code.toLowerCase()}.svg`}
+          src={`https://flagcdn.com/${defaultCountry.alpha2Code?.toLowerCase()}.svg`}
         />
         <span className={styles.selected_country}>
           {defaultCountry.alpha2Code}

@@ -3,29 +3,19 @@ import styles from './styles.module.css'
 import { CaretDownIcon } from './assets/caret-down'
 
 export const ReactCountryDropdown = (props) => {
-  const [Countries, setCountries] = useState([])
-  const [CountriesCopy, setCountriesCopy] = useState([])
+  const [countries, setCountries] = useState([])
+  const [countriesCopy, setCountriesCopy] = useState([])
   const [open, setOpen] = useState(false)
-  const [selectedCountry, setSelectedCountry] = useState(null)
-  const [defaultCountry, setDefaultCountry] = useState({
-    alpha2Code: '',
-    alpha3Code: ''
-  })
+  const [defaultCountry, setDefaultCountry] = useState({})
 
   const dropdownRef = useRef(null)
 
   useEffect(() => {
     defaultCountrySetter(props.countryCode ? props.countryCode : 'US')
     preFetchCountries().then((res) => {
+      console.log({ res })
       setCountries(res)
       setCountriesCopy(res)
-
-      preloadImages().then((arr) => {
-        arr.forEach((pic) => {
-          const img = new Image()
-          img.src = pic
-        })
-      })
     })
 
     document.addEventListener('mousedown', handleClickOutSide)
@@ -34,12 +24,9 @@ export const ReactCountryDropdown = (props) => {
   const defaultCountrySetter = (d) => {
     preFetchCountries().then((countries) => {
       const defaultC = countries.filter(
-        (i) => i.alpha2Code.toLowerCase() === d.toLowerCase()
+        (country) => country.alpha2Code.toLowerCase() === d.toLowerCase()
       )
-      setDefaultCountry({
-        alpha2Code: defaultC[0].alpha2Code,
-        alpha3Code: defaultC[0].alpha3Code
-      })
+      setDefaultCountry(defaultC[0])
     })
   }
 
@@ -55,36 +42,23 @@ export const ReactCountryDropdown = (props) => {
     }
   }
 
-  const preloadImages = async () => {
-    const mapIconArr = []
-    Countries.map((i) => {
-      mapIconArr.push(`https://restcountries.com/data/${i.alpha3Code}.svg`)
-    })
-    return mapIconArr
-  }
-
   const toggleDropDown = () => {
     /* reset all countries before closing */
     if (!open) {
-      setCountries(CountriesCopy)
+      setCountries(countriesCopy)
     }
     setOpen(!open)
   }
 
-  const handleCountryClick = (i) => {
+  const handleCountryClick = (country) => {
     const result = {
-      name: i.name,
-      code: i.alpha2Code,
-      capital: i.capital,
-      region: i.region,
-      latlng: i.latlng
+      name: country?.name,
+      code: country?.alpha2Code,
+      capital: country?.capital,
+      region: country?.region,
+      latlng: country?.latlng
     }
-    setDefaultCountry({
-      alpha2Code: i.alpha2Code,
-      alpha3Code: i.alpha3Code
-    })
-    /* Send the result as props on select*/
-    setSelectedCountry(result)
+    setDefaultCountry(country)
 
     if (props.onSelect) {
       props.onSelect(result)
@@ -96,7 +70,7 @@ export const ReactCountryDropdown = (props) => {
 
   const handleSearchInput = (e) => {
     const input = e.target.value.toLowerCase()
-    let filteredCountries = CountriesCopy.filter((i) =>
+    let filteredCountries = countriesCopy.filter((i) =>
       i.name.toLowerCase().includes(input.toLowerCase())
     )
     setCountries(filteredCountries)
@@ -107,7 +81,8 @@ export const ReactCountryDropdown = (props) => {
       <div className={styles.dropdown} onClick={toggleDropDown}>
         <img
           className={styles.country_flag}
-          src={`https://restcountries.com/data/${defaultCountry.alpha3Code.toLowerCase()}.svg`}
+          src={defaultCountry?.flag}
+          alt={defaultCountry?.name}
         />
         <span className={styles.selected_country}>
           {defaultCountry.alpha2Code}
@@ -128,13 +103,12 @@ export const ReactCountryDropdown = (props) => {
           </div>
 
           <div className={styles.dropdown_items}>
-            {Countries.map((i, index) => {
+            {countries.map((i, index) => {
               return (
                 <div
                   key={index}
                   onClick={() => handleCountryClick(i)}
-                  className={styles.dropdown_item}
-                >
+                  className={styles.dropdown_item}>
                   <img className={styles.country_flag} src={i.flag} alt='' />
                   <span className={styles.dropdown_item_title}> {i.name}</span>
                 </div>

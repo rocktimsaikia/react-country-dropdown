@@ -1,11 +1,11 @@
 # react-country-dropdown
 
-> A simple dropdown menu for selecting countries :rocket:
+> A simple dropdown menu for selecting countries
 
-![David](https://img.shields.io/david/rocktimsaikia/react-country-dropdown?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/rocktimsaikia/react-country-dropdown?style=for-the-badge) ![npm bundle size](https://img.shields.io/bundlephobia/min/react-country-dropdown?style=for-the-badge) ![GitHub package.json version](https://img.shields.io/github/package-json/v/rocktimsaikia/react-country-dropdown?style=for-the-badge)
+[![npm](https://img.shields.io/npm/v/react-country-dropdown?color=bright)](https://npmjs.com/package/react-country-dropdown)
 
+![Screenshot from 2023-03-25 12-43-36](https://user-images.githubusercontent.com/33410545/232977021-ace4a22d-6a05-4a62-80f7-0d6c34b9c0c8.png)
 
-<img src="https://i.ibb.co/Dz2WxrN/react-country.png" style="height:350px;width:250px"/>
 
 ## Install
 

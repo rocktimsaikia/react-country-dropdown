@@ -31,7 +31,7 @@ export const ReactCountryDropdown = (props) => {
   }
 
   const preFetchCountries = async () => {
-    const data = await fetch('https://restcountries.com/v2/all')
+    const data = await fetch('https://restcountries.com/v3.1/all')
     const result = await data.json()
     return result
   }

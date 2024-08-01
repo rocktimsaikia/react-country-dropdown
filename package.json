@@ -8,7 +8,12 @@
 		"url": "https://rocktimsaikia.dev"
 	},
 	"license": "MIT",
-	"keywords": ["country", "select", "dropdown", "react-dropdown"],
+	"keywords": [
+		"country",
+		"select",
+		"dropdown",
+		"react-dropdown"
+	],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",
 	"main": "dist/index.js",
 	"module": "dist/index.modern.js",
@@ -17,8 +22,7 @@
 		"node": ">=16"
 	},
 	"scripts": {
-		"build": "microbundle-crl --no-compress --format modern,cjs",
-		"start": "microbundle-crl watch --no-compress --format modern,cjs",
+		"build": "vite build",
 		"release": "pnpm build && np",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
@@ -28,20 +32,23 @@
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.1",
-		"@storybook/addon-essentials": "^8.2.6",
-		"@storybook/addon-interactions": "^8.2.6",
-		"@storybook/addon-links": "^8.2.6",
-		"@storybook/addon-onboarding": "^8.2.6",
-		"@storybook/blocks": "^8.2.6",
-		"@storybook/react": "^8.2.6",
-		"@storybook/react-vite": "^8.2.6",
-		"@storybook/test": "^8.2.6",
-		"microbundle-crl": "^0.13.11",
-		"prop-types": "^15.8.1",
+		"@storybook/addon-essentials": "^8.2.7",
+		"@storybook/addon-interactions": "^8.2.7",
+		"@storybook/addon-links": "^8.2.7",
+		"@storybook/addon-onboarding": "^8.2.7",
+		"@storybook/blocks": "^8.2.7",
+		"@storybook/react": "^8.2.7",
+		"@storybook/react-vite": "^8.2.7",
+		"@storybook/test": "^8.2.7",
+		"@vitejs/plugin-react": "^4.3.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"react-scripts": "^5.0.1",
-		"storybook": "^8.2.6"
+		"storybook": "^8.2.7"
 	},
-	"files": ["dist"]
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"vite": "^5.3.5"
+	}
 }

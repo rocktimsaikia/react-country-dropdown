@@ -1,53 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { CaretDownIcon } from "./assets/caret-down";
+import jsonCountries from "./countries.json";
 
 export const ReactCountryDropdown = (props) => {
-	const [countries, setCountries] = useState([]);
-	const [countriesCopy, setCountriesCopy] = useState([]);
-	const [open, setOpen] = useState(false);
-	const [defaultCountry, setDefaultCountry] = useState({});
+	const [countries, setCountries] = useState(jsonCountries);
+	const [currentCountry, setCurrentCountry] = useState({});
+	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 	const dropdownRef = useRef(null);
 
 	useEffect(() => {
-		defaultCountrySetter(props.countryCode ? props.countryCode : "US");
-		preFetchCountries().then((res) => {
-			console.log({ res });
-			setCountries(res);
-			setCountriesCopy(res);
-		});
-
+		setDefaultCountry(props.countryCode ? props.countryCode : "US");
 		document.addEventListener("mousedown", handleClickOutSide);
-	}, []);
+	}, [props]);
 
-	const defaultCountrySetter = (d) => {
-		preFetchCountries().then((countries) => {
-			const defaultC = countries.filter(
-				(country) => country.alpha2Code.toLowerCase() === d.toLowerCase(),
-			);
-			setDefaultCountry(defaultC[0]);
-		});
-	};
-
-	const preFetchCountries = async () => {
-		const data = await fetch("https://restcountries.com/v2/all");
-		const result = await data.json();
-		return result;
+	const setDefaultCountry = (d) => {
+		const thisCountry = countries.filter(
+			(country) => country.alpha2Code.toLowerCase() === d.toLowerCase(),
+		);
+		setCurrentCountry(thisCountry[0]);
 	};
 
 	const handleClickOutSide = (e) => {
 		if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-			setOpen(false);
+			setIsDropdownOpen(false);
 		}
 	};
 
 	const toggleDropDown = () => {
-		/* reset all countries before closing */
-		if (!open) {
-			setCountries(countriesCopy);
-		}
-		setOpen(!open);
+		setIsDropdownOpen(!isDropdownOpen);
 	};
 
 	const handleCountryClick = (country) => {
@@ -58,7 +40,7 @@ export const ReactCountryDropdown = (props) => {
 			region: country?.region,
 			latlng: country?.latlng,
 		};
-		setDefaultCountry(country);
+		setCurrentCountry(country);
 
 		if (props.onSelect) {
 			props.onSelect(result);
@@ -70,7 +52,7 @@ export const ReactCountryDropdown = (props) => {
 
 	const handleSearchInput = (e) => {
 		const input = e.target.value.toLowerCase();
-		let filteredCountries = countriesCopy.filter((i) =>
+		const filteredCountries = countries.filter((i) =>
 			i.name.toLowerCase().includes(input.toLowerCase()),
 		);
 		setCountries(filteredCountries);
@@ -81,16 +63,16 @@ export const ReactCountryDropdown = (props) => {
 			<div className={styles.dropdown} onClick={toggleDropDown}>
 				<img
 					className={styles.country_flag}
-					src={defaultCountry?.flag}
-					alt={defaultCountry?.name}
+					src={currentCountry?.flag}
+					alt={currentCountry?.name}
 				/>
 				<span className={styles.selected_country}>
-					{defaultCountry.alpha2Code}
+					{currentCountry.alpha2Code}
 				</span>
-				<CaretDownIcon point={open ? "up" : "down"} />
+				<CaretDownIcon point={isDropdownOpen ? "up" : "down"} />
 			</div>
 
-			{open && (
+			{isDropdownOpen && (
 				<div className={styles.dropdown_items_wrapper}>
 					<CaretDownIcon point="up_white" />
 					<div className={styles.input_wrapper}>
@@ -103,15 +85,15 @@ export const ReactCountryDropdown = (props) => {
 					</div>
 
 					<div className={styles.dropdown_items}>
-						{countries.map((i, index) => {
+						{countries.map((c) => {
 							return (
 								<div
-									key={index}
-									onClick={() => handleCountryClick(i)}
+									key={c.name}
+									onClick={() => handleCountryClick(c)}
 									className={styles.dropdown_item}
 								>
-									<img className={styles.country_flag} src={i.flag} alt="" />
-									<span className={styles.dropdown_item_title}> {i.name}</span>
+									<img className={styles.country_flag} src={c.flag} alt="" />
+									<span className={styles.dropdown_item_title}> {c.name}</span>
 								</div>
 							);
 						})}

@@ -1,10 +1,13 @@
 /* add css module styles here (optional) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
+input {
+	box-sizing: border-box;
+}
+
 .container {
-  width: 200px;
-  height: 50px;
   position: relative;
+  height: 50px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -21,12 +24,13 @@
 }
 
 .dropdown_items_wrapper {
-  position: relative;
+  position: absolute;
   margin-top: 18px;
   transition: all 0.5s;
   background: #FFFFFF;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
+	width: 250px;
 }
 
 .dropdown_items {
@@ -36,24 +40,24 @@
 }
 
 .input_wrapper {
-  margin: 10px;
   padding-top: 10px;
   position: relative;
+	text-align: center;
 }
 
 .country_search {
   outline: none;
   border: none;
   border-radius: 3px;
-  background: #f0f0f0;
-  padding: 5px;
-  width: 94%;
+  background: #e4e4e4;
+  padding: 8px 8px;
+	width: 95%;
 }
 
 .country_search::placeholder {
   font-family: 'Poppins';
   font-size: 13px;
-  color: rgb(168, 168, 168);
+  color: #000;
 }
 
 /* width */

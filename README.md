@@ -1,6 +1,6 @@
 # react-country-dropdown
 
-A simple react country selection dropdown.
+A simple react country selection dropdown component.
 
 [![npm](https://img.shields.io/npm/v/react-country-dropdown?color=bright)](https://npmjs.com/package/react-country-dropdown)
 

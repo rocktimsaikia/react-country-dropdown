@@ -1,19 +1,14 @@
 {
 	"name": "react-country-dropdown",
 	"version": "1.1.1",
-	"description": "A simple react country selection dropdown",
+	"description": "A simple react country selection dropdown component",
 	"author": {
 		"name": "Rocktim Saikia",
 		"email": "rocktimthedev@gmail.com",
 		"url": "https://rocktimsaikia.dev"
 	},
 	"license": "MIT",
-	"keywords": [
-		"country",
-		"select",
-		"dropdown",
-		"react-dropdown"
-	],
+	"keywords": ["country", "select", "dropdown", "react-dropdown"],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",
 	"main": "dist/index.js",
 	"module": "dist/index.modern.js",
@@ -45,9 +40,7 @@
 		"react-dom": "^18.3.1",
 		"storybook": "^8.2.7"
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"dependencies": {
 		"vite": "^5.3.5"
 	}

@@ -1,4 +1,4 @@
-import { ReactCountryDropdown } from "./index";
+import ReactCountryDropdown from "./index";
 
 const meta = {
 	component: ReactCountryDropdown,

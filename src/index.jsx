@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { CaretDownIcon } from "./icons";
 import jsonCountries from "./countries.json";
 
-export const ReactCountryDropdown = (props) => {
+export default function ReactCountryDropdown(props) {
 	const [countries, setCountries] = useState(jsonCountries);
 	const [currentCountry, setCurrentCountry] = useState({});
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -102,4 +102,4 @@ export const ReactCountryDropdown = (props) => {
 			)}
 		</div>
 	);
-};
+}

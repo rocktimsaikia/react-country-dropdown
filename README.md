@@ -14,26 +14,17 @@ npm i react-country-dropdown
 
 ## Usage
 
-```js
-import { ReactCountryDropdown } from 'react-country-dropdown'
-import 'react-country-dropdown/dist/index.css'
+```jsx
+import ReactCountryDropdown from "react-country-dropdown";
 
-const MyComponent = () => {
-  const handleSelect = (country) => {
-    console.log(country)
-    /*
-    {
-        name: "United States of America",
-        code: "US",
-        capital: "Washington, D.C.",
-        region: "Americas",
-        latlng: [38, -97]
-      }
-    */
-  }
-  return <ReactCountryDropdown onSelect={handleSelect} countryCode='IN' />
-  )
-}
+const Example = () => {
+	return (
+		<ReactCountryDropdown
+			onSelect={(country) => console.log(country.name)}
+			defaultCountry="IN"
+		/>
+	);
+};
 ```
 
-If the default country code is not set via the `countryCode` attribute, the default select country is `US`
+> If the default country code is not set via the `countryCode` attribute, the default select country is `US`

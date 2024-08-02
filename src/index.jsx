@@ -3,8 +3,10 @@ import styles from "./styles.module.css";
 import { CaretDownIcon } from "./icons";
 import jsonCountries from "./countries.json";
 
-export default function ReactCountryDropdown(props) {
-	const [countries, setCountries] = useState(jsonCountries);
+const countriesList = jsonCountries;
+
+function ReactCountryDropdown(props) {
+	const [countries, setCountries] = useState(countriesList);
 	const [currentCountry, setCurrentCountry] = useState({});
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -51,10 +53,14 @@ export default function ReactCountryDropdown(props) {
 	};
 
 	const handleSearchInput = (e) => {
-		const input = e.target.value.toLowerCase();
-		const filteredCountries = countries.filter((i) =>
-			i.name.toLowerCase().includes(input.toLowerCase()),
-		);
+		const input = e.target.value.toLowerCase().trim();
+		if (input === "") {
+			setCountries(countriesList);
+			return;
+		}
+		const filteredCountries = countries.filter((i) => {
+			return i.name.toLowerCase().startsWith(input);
+		});
 		setCountries(filteredCountries);
 	};
 
@@ -103,3 +109,5 @@ export default function ReactCountryDropdown(props) {
 		</div>
 	);
 }
+
+export default ReactCountryDropdown;

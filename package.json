@@ -10,9 +10,9 @@
 	"license": "MIT",
 	"keywords": ["country", "select", "dropdown", "react-dropdown"],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",
-	"main": "dist/index.js",
-	"module": "dist/index.modern.js",
-	"source": "src/index.js",
+	"main": "dist/react-country-dropdown.umd.js",
+	"module": "dist/react-country-dropdown.es.js",
+	"source": "src/index.jsx",
 	"engines": {
 		"node": ">=16"
 	},

@@ -7,6 +7,7 @@ input {
 
 .container {
   position: relative;
+	display: inline-block;
   height: 50px;
   font-family: 'Poppins', sans-serif;
 }
@@ -47,10 +48,12 @@ input {
 
 .country_search {
   outline: none;
+	border-color: #d3cecebf;
   border-style: solid;
 	border-width: 1px;
   border-radius: 3px;
   background: #f2f2f2;
+  color: #484848;
   padding: 8px 8px;
 	width: 92%;
 }

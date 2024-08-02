@@ -87,6 +87,7 @@ function ReactCountryDropdown(props) {
 							className={styles.country_search}
 							type="text"
 							placeholder="search country here"
+							autoFocus
 						/>
 					</div>
 

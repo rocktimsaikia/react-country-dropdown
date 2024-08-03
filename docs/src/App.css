@@ -44,3 +44,13 @@
 .dropdown-container {
 	text-align: center;
 }
+
+.code-snippet {
+	text-align: left;
+	font-size: 14px;
+}
+
+footer {
+	margin-top: 50px;
+	font-size: 15px;
+}

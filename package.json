@@ -8,7 +8,12 @@
 		"url": "https://rocktimsaikia.dev"
 	},
 	"license": "MIT",
-	"keywords": ["country", "select", "dropdown", "react-dropdown"],
+	"keywords": [
+		"country",
+		"select",
+		"dropdown",
+		"react-dropdown"
+	],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",
 	"main": "dist/react-country-dropdown.umd.js",
 	"module": "dist/react-country-dropdown.es.js",
@@ -38,10 +43,14 @@
 		"@vitejs/plugin-react": "^4.3.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
-		"storybook": "^8.2.7"
+		"storybook": "^8.2.7",
+		"vite-plugin-css-injected-by-js": "^3.5.1"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"dependencies": {
+		"prop-types": "^15.8.1",
 		"vite": "^5.3.5"
 	}
 }

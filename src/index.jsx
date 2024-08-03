@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { CaretDownIcon } from "./icons";
 import jsonCountries from "./countries.json";
+import PropTypes from "prop-types";
 
 const countriesList = jsonCountries;
 
-function ReactCountryDropdown(props) {
+function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 	const [countries, setCountries] = useState(countriesList);
 	const [currentCountry, setCurrentCountry] = useState({});
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,9 +14,9 @@ function ReactCountryDropdown(props) {
 	const dropdownRef = useRef(null);
 
 	useEffect(() => {
-		setDefaultCountry(props.countryCode ? props.countryCode : "US");
+		setDefaultCountry(defaultCountry);
 		document.addEventListener("mousedown", handleClickOutSide);
-	}, [props]);
+	}, [defaultCountry]);
 
 	const setDefaultCountry = (d) => {
 		const thisCountry = countries.filter(
@@ -44,9 +45,7 @@ function ReactCountryDropdown(props) {
 		};
 		setCurrentCountry(country);
 
-		if (props.onSelect) {
-			props.onSelect(result);
-		}
+		onSelect(result);
 
 		/* Hide the dropdown menu on selecting a country */
 		toggleDropDown();
@@ -110,5 +109,10 @@ function ReactCountryDropdown(props) {
 		</div>
 	);
 }
+
+ReactCountryDropdown.propTypes = {
+	defaultCountry: PropTypes.string.isRequired,
+	onSelect: PropTypes.func.isRequired,
+};
 
 export default ReactCountryDropdown;

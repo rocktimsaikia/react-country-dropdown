@@ -7,6 +7,7 @@
 		"email": "rocktimthedev@gmail.com",
 		"url": "https://rocktimsaikia.dev"
 	},
+	"type": "module",
 	"license": "MIT",
 	"keywords": ["country", "select", "dropdown", "react-dropdown"],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",

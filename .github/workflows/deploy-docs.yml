@@ -1,29 +1,29 @@
-name: Deploy Docs Website
+name: deploy docs website
 
 on:
-  # Runs on pushes targeting the default branch
+  # runs on pushes targeting the default branch
   push:
     branches: ['master']
     paths:
       - 'docs/**'
       - '.github/workflows/deploy-docs.yml'
 
-  # Allows you to run this workflow manually from the Actions tab
+  # allows you to run this workflow manually from the actions tab
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+# sets the github_token permissions to allow deployment to github pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# allow one concurrent deployment
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
+  # single deploy job since we're just deploying
   deploy:
 
     environment:
@@ -37,33 +37,33 @@ jobs:
         working-directory: ./docs
 
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: set up node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Set up Pnpm
+      - name: set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      - name: Install dependencies
+      - name: install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build
+      - name: build
         run: pnpm build
 
-      - name: Setup Pages
+      - name: setup pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: './dist'
+          path: './docs/dist'
 
-      - name: Deploy to GitHub Pages
+      - name: deploy to github pages
         id: deployment
         uses: actions/deploy-pages@v4

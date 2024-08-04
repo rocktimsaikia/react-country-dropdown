@@ -1,8 +1,10 @@
-import React from "react";
+interface IIcon extends React.SVGProps<SVGSVGElement> {
+	point: string;
+}
 
-export const CaretDownIcon = (props) => {
+export const CaretDownIcon = (props: IIcon) => {
 	const setStyle = () => {
-		let style;
+		let style: React.CSSProperties = {};
 		switch (props.point) {
 			case "up":
 				style = {

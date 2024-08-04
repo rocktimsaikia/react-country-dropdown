@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [react(), cssInjectedByJsPlugin()],
 	build: {
 		lib: {
-			entry: "src/index.jsx",
+			entry: "src/index.tsx",
 			name: "ReactCountryDropdown",
 			fileName: (format) => `react-country-dropdown.${format}.js`,
 		},

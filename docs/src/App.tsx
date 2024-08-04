@@ -44,10 +44,7 @@ function App() {
 			</div>
 
 			<div style={{ marginTop: "50px" }}>
-				<ReactCountryDropdown
-					onSelect={handleCountryChange}
-					defaultCountry="JP"
-				/>
+				<ReactCountryDropdown />
 			</div>
 
 			<div className="code-snippet">

@@ -1,47 +1,50 @@
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./styles.module.css";
-import { CaretDownIcon } from "./icons";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import jsonCountries from "./countries.json";
-import PropTypes from "prop-types";
+import { CaretDownIcon } from "./icons";
+import styles from "./styles.module.css";
 
 const countriesList = jsonCountries;
 
-function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
+type CountryJsonObject = (typeof jsonCountries)[number];
+
+interface ICountry {
+	name: string;
+	code: string;
+	capital: string;
+	region: string;
+	latlng: Array<number>;
+}
+
+interface Props {
+	defaultCountry?: string;
+	onSelect: (country: ICountry) => void;
+}
+
+function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 	const [countries, setCountries] = useState(countriesList);
-	const [currentCountry, setCurrentCountry] = useState({});
+	const [currentCountry, setCurrentCountry] = useState<CountryJsonObject>();
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-	const dropdownRef = useRef(null);
+	const dropdownRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		setDefaultCountry(defaultCountry);
-		document.addEventListener("mousedown", handleClickOutSide);
-	}, [defaultCountry]);
-
-	const setDefaultCountry = (d) => {
+	const setDefaultCountry = (d: string) => {
 		const thisCountry = countries.filter(
 			(country) => country.alpha2Code.toLowerCase() === d.toLowerCase(),
 		);
 		setCurrentCountry(thisCountry[0]);
 	};
 
-	const handleClickOutSide = (e) => {
-		if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-			setIsDropdownOpen(false);
-		}
-	};
-
 	const toggleDropDown = () => {
 		setIsDropdownOpen(!isDropdownOpen);
 	};
 
-	const handleCountryClick = (country) => {
-		const result = {
+	const handleCountryClick = (country: CountryJsonObject) => {
+		const result: ICountry = {
 			name: country?.name,
 			code: country?.alpha2Code,
-			capital: country?.capital,
+			capital: country?.capital as string,
 			region: country?.region,
-			latlng: country?.latlng,
+			latlng: country?.latlng as number[],
 		};
 		setCurrentCountry(country);
 
@@ -51,7 +54,7 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 		toggleDropDown();
 	};
 
-	const handleSearchInput = (e) => {
+	const handleSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value.toLowerCase().trim();
 		if (input === "") {
 			setCountries(countriesList);
@@ -63,6 +66,20 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 		setCountries(filteredCountries);
 	};
 
+	const handleClickOutSide = (e: MouseEvent) => {
+		if (
+			dropdownRef.current &&
+			!dropdownRef.current?.contains(e.target as Node)
+		) {
+			setIsDropdownOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		setDefaultCountry(defaultCountry);
+		document.addEventListener("mousedown", handleClickOutSide);
+	}, [defaultCountry]);
+
 	return (
 		<div className={styles.container} ref={dropdownRef}>
 			<div className={styles.dropdown} onClick={toggleDropDown}>
@@ -72,7 +89,7 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 					alt={currentCountry?.name}
 				/>
 				<span className={styles.selected_country}>
-					{currentCountry.alpha2Code}
+					{currentCountry?.alpha2Code}
 				</span>
 				<CaretDownIcon point={isDropdownOpen ? "up" : "down"} />
 			</div>
@@ -86,7 +103,7 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 							className={styles.country_search}
 							type="text"
 							placeholder="search country here"
-							autoFocus
+							autoFocus={true}
 						/>
 					</div>
 
@@ -109,10 +126,5 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }) {
 		</div>
 	);
 }
-
-ReactCountryDropdown.propTypes = {
-	defaultCountry: PropTypes.string.isRequired,
-	onSelect: PropTypes.func.isRequired,
-};
 
 export default ReactCountryDropdown;

@@ -8,21 +8,16 @@
 		"url": "https://rocktimsaikia.dev"
 	},
 	"license": "MIT",
-	"keywords": [
-		"country",
-		"select",
-		"dropdown",
-		"react-dropdown"
-	],
+	"keywords": ["country", "select", "dropdown", "react-dropdown"],
 	"repository": "https://github.com/rocktimsaikia/react-country-dropdown",
 	"main": "dist/react-country-dropdown.umd.js",
 	"module": "dist/react-country-dropdown.es.js",
-	"source": "src/index.jsx",
+	"source": "src/index.tsx",
 	"engines": {
 		"node": ">=16"
 	},
 	"scripts": {
-		"build": "vite build",
+		"build": "tsc && vite build",
 		"release": "pnpm build && np",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
@@ -40,15 +35,17 @@
 		"@storybook/react": "^8.2.7",
 		"@storybook/react-vite": "^8.2.7",
 		"@storybook/test": "^8.2.7",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"storybook": "^8.2.7",
+		"typescript": "^5.5.4",
 		"vite-plugin-css-injected-by-js": "^3.5.1"
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
+	"types": "dist/index.d.ts",
 	"dependencies": {
 		"prop-types": "^15.8.1",
 		"vite": "^5.3.5"

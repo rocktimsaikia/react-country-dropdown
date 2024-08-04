@@ -32,11 +32,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./docs
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: docs
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -49,11 +51,9 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        working-directory: docs
         run: pnpm install --no-frozen-lockfile
 
       - name: Build
-        working-directory: docs
         run: pnpm build
 
       - name: Setup Pages

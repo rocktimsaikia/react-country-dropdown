@@ -44,7 +44,7 @@ function App() {
 			</div>
 
 			<div style={{ marginTop: "50px" }}>
-				<ReactCountryDropdown />
+				<ReactCountryDropdown onSelect={handleCountryChange} />
 			</div>
 
 			<div className="code-snippet">

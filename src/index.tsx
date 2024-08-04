@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import jsonCountries from "./countries.json";
 import { CaretDownIcon } from "./icons";
 import styles from "./styles.module.css";
@@ -7,7 +7,7 @@ const countriesList = jsonCountries;
 
 type CountryJsonObject = (typeof jsonCountries)[number];
 
-interface ICountry {
+export interface ICountry {
 	name: string;
 	code: string;
 	capital: string;
@@ -54,7 +54,7 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 		toggleDropDown();
 	};
 
-	const handleSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const input = e.target.value.toLowerCase().trim();
 		if (input === "") {
 			setCountries(countriesList);

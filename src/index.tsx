@@ -55,13 +55,13 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 			name: country?.name,
 			code: country?.alpha2Code,
 			code2: country?.alpha3Code,
-			callingCodes: country?.callingCodes,
-			capital: country?.capital as string,
+			capital: country?.capital || "",
 			region: country?.region,
 			citizen: country?.demonym,
 			flagUrl: country?.flag,
+			callingCodes: country?.callingCodes || [],
 			currencies: country?.currencies || [],
-			timezones: country?.timezones,
+			timezones: country?.timezones || [],
 			latlng: country?.latlng || [],
 		};
 		setCurrentCountry(country);

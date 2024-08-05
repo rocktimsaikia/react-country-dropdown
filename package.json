@@ -20,7 +20,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "vite build",
 		"build-storybook": "storybook build",
-		"release": "pnpm build && np",
+		"release": "pnpm build && np --no-tests",
 		"storybook": "storybook dev -p 6006"
 	},
 	"devDependencies": {

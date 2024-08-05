@@ -2,13 +2,7 @@
 
 A simple react country selection dropdown component.
 
-> [!IMPORTANT]
-> This GitHub branch contains experimental and ongoing changes that \
-> have not been released yet. Please do not follow the guide below. \
-> For the working documentation of the current stable version, \
-> refer to the [npm page](https://npmjs.com/package/react-country-dropdown) of the package.
-
-[![npm](https://img.shields.io/npm/v/react-country-dropdown?color=bright)](https://npmjs.com/package/react-country-dropdown)
+[![npm](https://img.shields.io/npm/dt/react-country-dropdown?color=bright)](https://npmjs.com/package/react-country-dropdown) [![npm](https://img.shields.io/npm/v/react-country-dropdown?color=bright)](https://npmjs.com/package/react-country-dropdown)
 
 ![Demo Screenshot](./screenshot.png)
 
@@ -20,6 +14,8 @@ npm i react-country-dropdown
 
 ## Usage
 
+Check the full documentation and demo [here](https://rocktimsaikia.github.io/react-country-dropdown/).
+
 ```jsx
 import ReactCountryDropdown from "react-country-dropdown";
 
@@ -27,10 +23,12 @@ const Example = () => {
 	return (
 		<ReactCountryDropdown
 			onSelect={(country) => console.log(country.name)}
-			defaultCountry="IN"
+			defaultCountry="JP"
 		/>
 	);
 };
 ```
 
-> If the default country code is not set via the `countryCode` attribute, the default select country is `US`
+## License
+
+[MIT](./LICENSE) &copy; 2024 [Rocktim Saikia](https://github.com/rocktimsaikia)

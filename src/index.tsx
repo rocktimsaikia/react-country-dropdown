@@ -7,11 +7,23 @@ const countriesList = jsonCountries;
 
 type CountryJsonObject = (typeof jsonCountries)[number];
 
+type Currency = {
+	code: string;
+	name: string;
+	symbol: string;
+};
+
 export interface ICountry {
 	name: string;
-	code: string;
+	code2: string;
+	code3: string;
+	callingCodes: Array<string>;
 	capital: string;
 	region: string;
+	citizen: string;
+	flagUrl: string;
+	currencies: Array<Currency>;
+	timezones: Array<string>;
 	latlng: Array<number>;
 }
 
@@ -41,9 +53,15 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 	const handleCountryClick = (country: CountryJsonObject) => {
 		const result: ICountry = {
 			name: country?.name,
-			code: country?.alpha2Code,
+			code2: country?.alpha2Code,
+			code3: country?.alpha3Code,
+			callingCodes: country?.callingCodes,
 			capital: country?.capital as string,
 			region: country?.region,
+			citizen: country?.demonym,
+			flagUrl: country?.flag,
+			currencies: country?.currencies || [],
+			timezones: country?.timezones,
 			latlng: country?.latlng as number[],
 		};
 		setCurrentCountry(country);

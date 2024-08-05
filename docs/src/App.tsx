@@ -32,18 +32,7 @@ function App() {
 	const handleCountryChange = (country: ICountry) => {
 		// Convert the country object to a formatted JSON string
 		// where the arrays are in one line and spaces after commas.
-		const formattedCountry = JSON.stringify(
-			country,
-			(_key, value) => {
-				if (Array.isArray(value)) {
-					return JSON.stringify(value);
-				}
-				return value;
-			},
-			4,
-		)
-			.replace(/"\[|\]"/g, (match) => (match === '"[' ? "[" : "]"))
-			.replace(/,/g, ", ");
+		const formattedCountry = JSON.stringify(country, null, 4);
 		setCountryJson(formattedCountry);
 	};
 

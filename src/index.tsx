@@ -15,8 +15,8 @@ type Currency = {
 
 export interface ICountry {
 	name: string;
+	code: string;
 	code2: string;
-	code3: string;
 	callingCodes: Array<string>;
 	capital: string;
 	region: string;
@@ -53,8 +53,8 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 	const handleCountryClick = (country: CountryJsonObject) => {
 		const result: ICountry = {
 			name: country?.name,
-			code2: country?.alpha2Code,
-			code3: country?.alpha3Code,
+			code: country?.alpha2Code,
+			code2: country?.alpha3Code,
 			callingCodes: country?.callingCodes,
 			capital: country?.capital as string,
 			region: country?.region,

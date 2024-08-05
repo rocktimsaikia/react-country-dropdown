@@ -1,9 +1,9 @@
-// import { useState } from "react";
-import { CodeBlock, CopyBlock, atomOneDark } from "react-code-blocks";
-// import ReactCountryDropdown from "react-country-dropdown";
-// import type { ICountry } from "react-country-dropdown";
-import "./App.css";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
+import { CodeBlock, CopyBlock, atomOneDark } from "react-code-blocks";
+import type { ICountry } from "react-country-dropdown";
+import ReactCountryDropdown from "react-country-dropdown";
+import "./App.css";
 
 const codeString = `
 import ReactCountryDropdown from "react-country-dropdown";
@@ -27,12 +27,12 @@ export default function App() {
 const installString = "\nnpm i react-country-dropdown\n\n";
 
 function App() {
-	// const [countryJson, setCountryJson] = useState<string>("");
+	const [countryJson, setCountryJson] = useState<string>("");
 
-	// const handleCountryChange = (country: ICountry) => {
-	// 	const formattedCountry = JSON.stringify(country, null, 4);
-	// 	setCountryJson(formattedCountry);
-	// };
+	const handleCountryChange = (country: ICountry) => {
+		const formattedCountry = JSON.stringify(country, null, 4);
+		setCountryJson(formattedCountry);
+	};
 
 	return (
 		<div>
@@ -45,27 +45,27 @@ function App() {
 				</p>
 			</div>
 
-			{/* <div style={{ marginTop: "50px" }}> */}
-			{/* 	<ReactCountryDropdown */}
-			{/* 		onSelect={handleCountryChange} */}
-			{/* 		defaultCountry="JP" */}
-			{/* 	/> */}
-			{/* </div> */}
+			<div style={{ marginTop: "50px" }}>
+				<ReactCountryDropdown
+					onSelect={handleCountryChange}
+					defaultCountry="JP"
+				/>
+			</div>
 
 			<div style={{ textAlign: "left", fontSize: "14px" }}>
 				<div>
 					<h2 style={{ textAlign: "left", marginBottom: "5px" }}>Usage:</h2>
 					<CodeBlock text={codeString} language="jsx" theme={atomOneDark} />
 				</div>
-				{/* {countryJson && ( */}
-				{/* 	<div> */}
-				{/* 		<p> */}
-				{/* 			The returned <code style={{ color: "orange" }}>`country`</code>{" "} */}
-				{/* 			object : */}
-				{/* 		</p> */}
-				{/* 		<CodeBlock text={countryJson} language="json" theme={atomOneDark} /> */}
-				{/* 	</div> */}
-				{/* )} */}
+				{countryJson && (
+					<div>
+						<p>
+							The returned <code style={{ color: "orange" }}>`country`</code>{" "}
+							object :
+						</p>
+						<CodeBlock text={countryJson} language="json" theme={atomOneDark} />
+					</div>
+				)}
 			</div>
 
 			<div style={{ marginTop: "50px", textAlign: "left" }}>

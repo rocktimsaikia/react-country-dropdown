@@ -10,5 +10,8 @@
 				"useKeyWithClickEvents": "off"
 			}
 		}
+	},
+	"files": {
+		"ignore": ["package.json"]
 	}
 }

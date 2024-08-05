@@ -28,11 +28,11 @@ export interface ICountry {
 }
 
 interface Props {
-	defaultCountry?: string;
+	defaultCountry: string;
 	onSelect: (country: ICountry) => void;
 }
 
-function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
+function ReactCountryDropdown({ defaultCountry, onSelect }: Props) {
 	const [countries, setCountries] = useState(countriesList);
 	const [currentCountry, setCurrentCountry] = useState<CountryJsonObject>();
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);

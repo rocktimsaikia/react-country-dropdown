@@ -75,6 +75,13 @@ function ReactCountryDropdown({ defaultCountry = "IN", onSelect }: Props) {
 		}
 	};
 
+	// Always reset the countries list when the dropdown is closed
+	useEffect(() => {
+		if (!isDropdownOpen) {
+			setCountries(countriesList);
+		}
+	}, [isDropdownOpen]);
+
 	useEffect(() => {
 		setDefaultCountry(defaultCountry);
 		document.addEventListener("mousedown", handleClickOutSide);

@@ -1,13 +1,15 @@
 import ReactCountryDropdown from "./index";
+import { action } from "@storybook/addon-actions";
+import type { Meta } from "@storybook/react";
 
-const meta = {
+export default {
+	title: "ReactCountryDropdown",
 	component: ReactCountryDropdown,
-};
+} as Meta;
 
-export default meta;
-
-export const Primary = {
-	parameters: {
-		countryCode: "IN",
+export const Default = {
+	args: {
+		defaultCountry: "JP",
+		onSelect: action("onSelect"),
 	},
 };

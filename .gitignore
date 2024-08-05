@@ -23,3 +23,5 @@ yarn-error.log*
 
 *storybook.log
 pnpm-lock.yaml
+
+data

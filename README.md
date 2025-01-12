@@ -21,14 +21,7 @@ Check the full documentation and demo [here](https://rocktimsaikia.github.io/rea
 ```jsx
 import ReactCountryDropdown from "react-country-dropdown";
 
-const Example = () => {
-	return (
-		<ReactCountryDropdown
-			defaultCountry="JP"
-			onSelect={(country) => console.log(country.name)}
-		/>
-	);
-};
+<ReactCountryDropdown defaultCountry="JP" onSelect={(country) => console.log(country.name)}/>
 ```
 
 ## API

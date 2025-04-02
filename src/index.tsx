@@ -13,6 +13,12 @@ import { cn } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 
+interface Currency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
 interface Country {
   name: string;
   alpha2Code: string;
@@ -27,14 +33,21 @@ interface Country {
   currencies: Currency[];
 }
 
-interface Currency {
-  code: string;
-  name: string;
-  symbol: string;
-}
+const normalizedCountries: Country[] = jsonCountries.map((country: any) => ({
+  name: country.name ?? null,
+  alpha2Code: country.alpha2Code ?? null,
+  alpha3Code: country.alpha3Code ?? null,
+  callingCodes: country.callingCodes ?? null,
+  capital: country.capital ?? null,
+  region: country.region ?? null,
+  latlng: country.latlng ?? null,
+  demonym: country.demonym ?? null,
+  timezones: country.timezones ?? null,
+  flag: country.flag ?? `/flags/${country.alpha2Code?.toLowerCase()}.png`,
+  currencies: country.currencies ?? null,
+}));
 
-const countriesList = jsonCountries;
-const countryMap = new Map(jsonCountries.map((c) => [c.alpha2Code, c]));
+const countryMap = new Map(normalizedCountries.map((c) => [c.alpha2Code, c]));
 
 type Props = {
   // Optional prop to either show country code or country name
@@ -59,6 +72,13 @@ export default function RCD({
 
   const selectedCountry = value ? countryMap.get(value) : null;
 
+  React.useEffect(() => {
+    normalizedCountries.forEach((country) => {
+      const img = new Image();
+      img.src = `/flags/${country.alpha2Code.toLowerCase()}.svg`;
+    });
+  }, []);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -70,7 +90,12 @@ export default function RCD({
         >
           {selectedCountry ? (
             <>
-              <img className="h-3 w-3" src={selectedCountry.flag} alt="" loading="lazy" />
+              <img
+                className="h-3 w-3"
+                src={`/flags/${selectedCountry.alpha2Code.toLowerCase()}.svg`}
+                alt=""
+                loading="lazy"
+              />
               {!showCountryCode ? selectedCountry.name : selectedCountry.alpha2Code}
             </>
           ) : (
@@ -85,7 +110,7 @@ export default function RCD({
           <CommandList>
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>
-              {countriesList.map((country) => (
+              {normalizedCountries.map((country) => (
                 <CommandItem
                   className="cursor-pointer"
                   key={country.alpha2Code}
@@ -96,7 +121,12 @@ export default function RCD({
                     onCountryChange(country);
                   }}
                 >
-                  <img className="h-3 w-3" src={country.flag} alt="" loading="lazy" />
+                  <img
+                    className="h-3 w-3"
+                    src={`/flags/${country.alpha2Code.toLowerCase()}.svg`}
+                    alt={country.name}
+                    loading="lazy"
+                  />
                   {country.name}
                   <Check
                     className={cn(

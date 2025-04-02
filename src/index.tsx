@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
 import * as React from "react";
 
+const FLAGS_PATH = "./assets/flags/";
+
 interface Currency {
   code: string;
   name: string;
@@ -43,7 +45,7 @@ const normalizedCountries: Country[] = jsonCountries.map((country: any) => ({
   latlng: country.latlng ?? null,
   demonym: country.demonym ?? null,
   timezones: country.timezones ?? null,
-  flag: country.flag ?? `/flags/${country.alpha2Code?.toLowerCase()}.png`,
+  flag: country.flag ?? `${FLAGS_PATH}${country.alpha2Code.toLowerCase()}.svg`,
   currencies: country.currencies ?? null,
 }));
 
@@ -61,7 +63,7 @@ type Props = {
 
   onCountryChange: (country: Country) => void;
 };
-export default function RCD({
+export default function ReactCountryDropdown({
   showCountryCode = true,
   placeholder = "Select Country",
   defaultCountryCode,
@@ -75,7 +77,7 @@ export default function RCD({
   React.useEffect(() => {
     normalizedCountries.forEach((country) => {
       const img = new Image();
-      img.src = `/flags/${country.alpha2Code.toLowerCase()}.svg`;
+      img.src = `${FLAGS_PATH}${country.alpha2Code.toLowerCase()}.svg`;
     });
   }, []);
 
@@ -92,7 +94,7 @@ export default function RCD({
             <>
               <img
                 className="h-3 w-3"
-                src={`/flags/${selectedCountry.alpha2Code.toLowerCase()}.svg`}
+                src={`${FLAGS_PATH}${selectedCountry.alpha2Code.toLowerCase()}.svg`}
                 alt=""
                 loading="lazy"
               />
@@ -123,7 +125,7 @@ export default function RCD({
                 >
                   <img
                     className="h-3 w-3"
-                    src={`/flags/${country.alpha2Code.toLowerCase()}.svg`}
+                    src={`${FLAGS_PATH}${country.alpha2Code.toLowerCase()}.svg`}
                     alt={country.name}
                     loading="lazy"
                   />
